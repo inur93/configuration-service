@@ -86,7 +86,8 @@ public class Configuration {
 
 
     public static String get(String key, String defaultValue){
-        String val = USE_ENVIRONMENT_VARIABLES ? System.getProperty(CONFIG_PREFIX + key) : getInstance().configs.getProperty(CONFIG_PREFIX + key);
+        String val = USE_ENVIRONMENT_VARIABLES ? System.getenv(CONFIG_PREFIX + key)
+                : getInstance().configs.getProperty(CONFIG_PREFIX + key);
         return val == null || val.length() == 0 ? defaultValue : val;
     }
 
